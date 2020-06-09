@@ -268,13 +268,6 @@ var app = (function () {
         else
             dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
     }
-    function set_data_dev(text, data) {
-        data = '' + data;
-        if (text.data === data)
-            return;
-        dispatch_dev("SvelteDOMSetData", { node: text, data });
-        text.data = data;
-    }
     function validate_slots(name, slot, keys) {
         for (const slot_key of Object.keys(slot)) {
             if (!~keys.indexOf(slot_key)) {
@@ -305,35 +298,93 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
-    	let h1;
-    	let t0;
+    	let div3;
+    	let form;
+    	let div0;
+    	let label0;
     	let t1;
+    	let input0;
     	let t2;
-    	let t3;
-    	let p;
+    	let div1;
+    	let label1;
     	let t4;
+    	let input1;
+    	let t5;
+    	let p0;
+    	let t7;
+    	let div2;
+    	let button;
+    	let t9;
     	let a;
-    	let t6;
+    	let t11;
+    	let p1;
 
     	const block = {
     		c: function create() {
     			main = element("main");
-    			h1 = element("h1");
-    			t0 = text("Hello ");
-    			t1 = text(/*name*/ ctx[0]);
-    			t2 = text("!");
-    			t3 = space();
-    			p = element("p");
-    			t4 = text("Visit the ");
+    			div3 = element("div");
+    			form = element("form");
+    			div0 = element("div");
+    			label0 = element("label");
+    			label0.textContent = "Username";
+    			t1 = space();
+    			input0 = element("input");
+    			t2 = space();
+    			div1 = element("div");
+    			label1 = element("label");
+    			label1.textContent = "Password";
+    			t4 = space();
+    			input1 = element("input");
+    			t5 = space();
+    			p0 = element("p");
+    			p0.textContent = "Please choose a password.";
+    			t7 = space();
+    			div2 = element("div");
+    			button = element("button");
+    			button.textContent = "Sign In";
+    			t9 = space();
     			a = element("a");
-    			a.textContent = "Svelte tutorial";
-    			t6 = text(" to learn how to build Svelte apps.");
-    			attr_dev(h1, "class", "svelte-abyxlp");
-    			add_location(h1, file, 5, 1, 46);
-    			attr_dev(a, "href", "https://svelte.dev/tutorial");
-    			add_location(a, file, 6, 14, 83);
-    			add_location(p, file, 6, 1, 70);
-    			attr_dev(main, "class", "svelte-abyxlp");
+    			a.textContent = "Forgot Password?";
+    			t11 = space();
+    			p1 = element("p");
+    			p1.textContent = "©2020 Acme Corp. All rights reserved.";
+    			attr_dev(label0, "class", "block text-gray-700 text-sm font-bold mb-2");
+    			attr_dev(label0, "for", "username");
+    			add_location(label0, file, 9, 6, 306);
+    			attr_dev(input0, "class", "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline");
+    			attr_dev(input0, "id", "username");
+    			attr_dev(input0, "type", "text");
+    			attr_dev(input0, "placeholder", "Username");
+    			add_location(input0, file, 12, 6, 418);
+    			attr_dev(div0, "class", "mb-4");
+    			add_location(div0, file, 8, 4, 281);
+    			attr_dev(label1, "class", "block text-gray-700 text-sm font-bold mb-2");
+    			attr_dev(label1, "for", "password");
+    			add_location(label1, file, 15, 6, 646);
+    			attr_dev(input1, "class", "shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline");
+    			attr_dev(input1, "id", "password");
+    			attr_dev(input1, "type", "password");
+    			attr_dev(input1, "placeholder", "******************");
+    			add_location(input1, file, 18, 6, 758);
+    			attr_dev(p0, "class", "text-red-500 text-xs italic");
+    			add_location(p0, file, 19, 6, 986);
+    			attr_dev(div1, "class", "mb-6");
+    			add_location(div1, file, 14, 4, 621);
+    			attr_dev(button, "class", "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline");
+    			attr_dev(button, "type", "button");
+    			add_location(button, file, 22, 6, 1124);
+    			attr_dev(a, "class", "inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800");
+    			attr_dev(a, "href", "#");
+    			add_location(a, file, 25, 6, 1302);
+    			attr_dev(div2, "class", "flex items-center justify-between");
+    			add_location(div2, file, 21, 4, 1070);
+    			attr_dev(form, "class", "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4");
+    			add_location(form, file, 7, 2, 215);
+    			attr_dev(p1, "class", "text-center text-gray-500 text-xs");
+    			add_location(p1, file, 30, 2, 1462);
+    			attr_dev(div3, "class", "w-full max-w-xs ");
+    			add_location(div3, file, 6, 0, 182);
+    			attr_dev(main, "class", "bg-white rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-4 px-3 py-10 bg-gray-200 flex justify-center svelte-eaye1o");
     			add_location(main, file, 4, 0, 38);
     		},
     		l: function claim(nodes) {
@@ -341,19 +392,28 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			append_dev(main, h1);
-    			append_dev(h1, t0);
-    			append_dev(h1, t1);
-    			append_dev(h1, t2);
-    			append_dev(main, t3);
-    			append_dev(main, p);
-    			append_dev(p, t4);
-    			append_dev(p, a);
-    			append_dev(p, t6);
+    			append_dev(main, div3);
+    			append_dev(div3, form);
+    			append_dev(form, div0);
+    			append_dev(div0, label0);
+    			append_dev(div0, t1);
+    			append_dev(div0, input0);
+    			append_dev(form, t2);
+    			append_dev(form, div1);
+    			append_dev(div1, label1);
+    			append_dev(div1, t4);
+    			append_dev(div1, input1);
+    			append_dev(div1, t5);
+    			append_dev(div1, p0);
+    			append_dev(form, t7);
+    			append_dev(form, div2);
+    			append_dev(div2, button);
+    			append_dev(div2, t9);
+    			append_dev(div2, a);
+    			append_dev(div3, t11);
+    			append_dev(div3, p1);
     		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*name*/ 1) set_data_dev(t1, /*name*/ ctx[0]);
-    		},
+    		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
