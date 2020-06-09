@@ -1,10 +1,79 @@
 <script>
 	export let name;
+	let todo = {
+		description: ''
+	}
+
+	let uid = 1;
+	let todos = [
+		{ id: uid++, done: false, description: 'write some docs' },
+		{ id: uid++, done: false, description: 'start writing blog post' },
+		{ id: uid++, done: true,  description: 'buy some milk' },
+		{ id: uid++, done: false, description: 'mow the lawn' },
+		{ id: uid++, done: false, description: 'feed the turtle' },
+		{ id: uid++, done: false, description: 'fix some bugs' },
+	];
+
+	function add(e) {
+		console.log(e.value);
+		const todo = {
+			id: uid++,
+			done: false,
+			description: e.value
+		}
+
+		todos = [...todos, todo];
+		console.log('this todos',todos);
+	}
+
+	function mark(e, done) {
+		console.log('done', done)
+		console.log('mark', e.done)
+		e.done = done
+
+		console.log('mark', e)
+		console.log('this todos',todos);
+	}
+	$: {
+		console.log('this todos',todos);
+	}
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<input type="text" class="w-100" placeholder="有什麼需要紀錄呢？" bind:value="{todo.description}" on:keydown={e => e.key === 'Enter' && add(e.target)}>
+				<pre>{todo.description}</pre>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<h2>todo</h2>
+				{#each todos.filter(e=> !e.done) as item (item.id)}
+					<label class="text-left">
+						<input type=checkbox on:change={() => mark(item, true)}>
+						<span>{item.description}</span>
+						<button>remove</button>
+					</label>
+				{/each}
+				
+			</div>
+			<div class="col-12 col-md-6">
+				<h2>done</h2>
+				{#each todos.filter(e=> e.done) as item (item.id)}
+					<label class="text-left done">
+						<input type=checkbox checked on:change={() => mark(item, false)}>
+						<span>{item.description}</span>
+						<button>remove</button>
+					</label>
+				{/each}
+			</div>
+		</div>
+	</div>
 </main>
 
 <style lang="scss">
@@ -27,5 +96,55 @@
 		main {
 			max-width: none;
 		}
+	}
+
+	h2 {
+		font-size: 2em;
+		font-weight: 200;
+		user-select: none;
+		margin: 0 0 0.5em 0;
+	}
+
+	label {
+		position: relative;
+		line-height: 1.2;
+		padding: 0.5em 2.5em 0.5em 2em;
+		margin: 0 0 0.5em 0;
+		border-radius: 2px;
+		user-select: none;
+		border: 1px solid hsl(240, 8%, 70%);
+		background-color:hsl(240, 8%, 93%);
+		color: #333;
+	}
+
+	input[type="checkbox"] {
+		position: absolute;
+		left: 0.5em;
+		top: 0.6em;
+		margin: 0;
+	}
+
+	.done {
+		border: 1px solid hsl(240, 8%, 90%);
+		background-color:hsl(240, 8%, 98%);
+	}
+
+	button {
+		position: absolute;
+		top: 0;
+		right: 0.2em;
+		width: 2em;
+		height: 100%;
+		background: no-repeat 50% 50% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23676778' d='M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M17,7H14.5L13.5,6H10.5L9.5,7H7V9H17V7M9,18H15A1,1 0 0,0 16,17V10H8V17A1,1 0 0,0 9,18Z'%3E%3C/path%3E%3C/svg%3E");
+		background-size: 1.4em 1.4em;
+		border: none;
+		opacity: 0;
+		transition: opacity 0.2s;
+		text-indent: -9999px;
+		cursor: pointer;
+	}
+
+	label:hover button {
+		opacity: 1;
 	}
 </style>
