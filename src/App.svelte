@@ -1,42 +1,83 @@
 <script>
+	import { quintOut } from 'svelte/easing';      // 動態參數
+	import { crossfade } from 'svelte/transition'; // 特殊函數
+	import { flip } from 'svelte/animate';         // 未過度的元素要使用 animate https://svelte.dev/docs#svelte_animate
+	
 	export let name;
-	let todo = {
-		description: ''
-	}
 
-	let uid = 1;
-	let todos = [
-		{ id: uid++, done: false, description: 'write some docs' },
-		{ id: uid++, done: false, description: 'start writing blog post' },
-		{ id: uid++, done: true,  description: 'buy some milk' },
-		{ id: uid++, done: false, description: 'mow the lawn' },
-		{ id: uid++, done: false, description: 'feed the turtle' },
-		{ id: uid++, done: false, description: 'fix some bugs' },
-	];
+	// let uid = 1;
+	// let todos = [
+	// 	{ id: uid++, done: false, description: 'write some docs' },
+	// 	{ id: uid++, done: false, description: 'start writing blog post' },
+	// 	{ id: uid++, done: true,  description: 'buy some milk' },
+	// 	{ id: uid++, done: false, description: 'mow the lawn' },
+	// 	{ id: uid++, done: false, description: 'feed the turtle' },
+	// 	{ id: uid++, done: false, description: 'fix some bugs' },
+	// ];
+
+	let todos = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
+	// let uid = localStorage.getItem('todos') ? todos[todos.length - 1].id : 1;
+	// console.log('ttt',todos[todos.length - 1].id)
+
 
 	function add(e) {
 		console.log(e.value);
 		const todo = {
-			id: uid++,
+			id: Date.now(),
 			done: false,
 			description: e.value
 		}
 
 		todos = [...todos, todo];
 		console.log('this todos',todos);
+		localStorage.setItem('todos', JSON.stringify(todos));
+		console.log('this todos', JSON.stringify(todos));
+		console.log('this todo description',todo.description);
+		e.value = ''
 	}
 
-	function mark(e, done) {
-		console.log('done', done)
-		console.log('mark', e.done)
-		e.done = done
+	function mark(todo, done) {
+		// console.log('done', done)
+		// console.log('mark', e.done)
+		todo.done = done
 
-		console.log('mark', e)
+		// console.log('mark', e)
 		console.log('this todos',todos);
+		// todo.done = done;
+		console.log('this todo 2',todo);
+		// console.log('this todos',todos);
+		remove(todo);
+		todos = todos.concat(todo);
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}
+
+	function remove(todo) {
+		todos = todos.filter(t => t !== todo);
+		localStorage.setItem('todos', JSON.stringify(todos));
 	}
 	$: {
 		console.log('this todos',todos);
 	}
+
+
+
+	// 補間動畫
+	const [send, receive] = crossfade({  // 特殊函數，必定創建send, receive
+		duration: d => Math.sqrt(d * 200),
+		fallback(node, params) {  //過度設定
+			const style = getComputedStyle(node);
+			const transform = style.transform === 'none' ? '' : style.transform;
+
+			return {
+				duration: 600,     // 過度時間
+				easing: quintOut,  // 由 import 來使用 https://svelte.dev/docs#svelte_easing
+				css: t => `
+					transform: ${transform} scale(${t});
+					opcity: ${t}
+				`                  // 過度動畫樣式（t 為開始，u 為結束）
+			}
+		}
+	})
 </script>
 
 <main>
@@ -46,18 +87,21 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<input type="text" class="w-100" placeholder="有什麼需要紀錄呢？" bind:value="{todo.description}" on:keydown={e => e.key === 'Enter' && add(e.target)}>
-				<pre>{todo.description}</pre>
+				<input type="text" class="w-100" placeholder="有什麼需要紀錄呢？" on:keydown={e => e.key === 'Enter' && add(e.target)}>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6">
 				<h2>todo</h2>
 				{#each todos.filter(e=> !e.done) as item (item.id)}
-					<label class="text-left">
+					<label class="text-left"
+						in:receive="{{key: item.id}}" 
+						out:send="{{key: item.id}}"
+						animate:flip="{{duration: 200}}"
+						>
 						<input type=checkbox on:change={() => mark(item, true)}>
 						<span>{item.description}</span>
-						<button>remove</button>
+						<button on:click="{() => remove(item)}">remove</button>
 					</label>
 				{/each}
 				
@@ -65,14 +109,35 @@
 			<div class="col-12 col-md-6">
 				<h2>done</h2>
 				{#each todos.filter(e=> e.done) as item (item.id)}
-					<label class="text-left done">
+					<label class="text-left done" 
+						in:receive="{{key: item.id}}" 
+						out:send="{{key: item.id}}"
+						animate:flip="{{duration: 200}}"
+						>
 						<input type=checkbox checked on:change={() => mark(item, false)}>
 						<span>{item.description}</span>
-						<button>remove</button>
+						<button on:click="{() => remove(item)}">remove</button>
 					</label>
 				{/each}
 			</div>
 		</div>
+
+		<!-- <div class="row">
+			<div class="col-12">
+				<h2>ALL</h2>
+				{#each todos as item (item.id)}
+					<label class="text-left"
+						in:receive="{{key: item.id}}" 
+						out:send="{{key: item.id}}"
+						animate:flip="{{duration: 200}}"
+						>
+						<input type=checkbox on:change={() => mark(item, true)} checked="{item.done}">
+						<span>{item.description}</span>
+						<button on:click="{() => remove(item)}">remove</button>
+					</label>
+				{/each}
+			</div>
+		</div> -->
 	</div>
 </main>
 
@@ -81,7 +146,6 @@
 	main {
 		text-align: center;
 		padding: 1em;
-		max-width: 240px;
 		margin: 0 auto;
 	}
 
