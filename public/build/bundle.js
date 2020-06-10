@@ -871,7 +871,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (68:4) {#each todos.filter(e=> !e.done) as item (item.id)}
+    // (71:6) {#each todos.filter(e=> !e.done) as item (item.id)}
     function create_each_block_1(key_1, ctx) {
     	let label;
     	let input;
@@ -913,12 +913,12 @@ var app = (function () {
     			t4 = space();
     			attr_dev(input, "type", "checkbox");
     			attr_dev(input, "class", "svelte-v2by5z");
-    			add_location(input, file, 73, 6, 1871);
-    			add_location(span, file, 74, 6, 1934);
+    			add_location(input, file, 76, 8, 1983);
+    			add_location(span, file, 77, 8, 2048);
     			attr_dev(button, "class", "svelte-v2by5z");
-    			add_location(button, file, 75, 6, 1972);
+    			add_location(button, file, 78, 8, 2088);
     			attr_dev(label, "class", "text-left svelte-v2by5z");
-    			add_location(label, file, 68, 5, 1722);
+    			add_location(label, file, 71, 7, 1824);
     			this.first = label;
     		},
     		m: function mount(target, anchor) {
@@ -985,14 +985,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(68:4) {#each todos.filter(e=> !e.done) as item (item.id)}",
+    		source: "(71:6) {#each todos.filter(e=> !e.done) as item (item.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:4) {#each todos.filter(e=> e.done) as item (item.id)}
+    // (89:6) {#each todos.filter(e=> e.done) as item (item.id)}
     function create_each_block(key_1, ctx) {
     	let label;
     	let input;
@@ -1035,12 +1035,12 @@ var app = (function () {
     			attr_dev(input, "type", "checkbox");
     			input.checked = true;
     			attr_dev(input, "class", "svelte-v2by5z");
-    			add_location(input, file, 88, 6, 2335);
-    			add_location(span, file, 89, 6, 2407);
+    			add_location(input, file, 94, 8, 2547);
+    			add_location(span, file, 95, 8, 2621);
     			attr_dev(button, "class", "svelte-v2by5z");
-    			add_location(button, file, 90, 6, 2445);
+    			add_location(button, file, 96, 8, 2661);
     			attr_dev(label, "class", "text-left done svelte-v2by5z");
-    			add_location(label, file, 83, 5, 2180);
+    			add_location(label, file, 89, 7, 2382);
     			this.first = label;
     		},
     		m: function mount(target, anchor) {
@@ -1107,7 +1107,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(83:4) {#each todos.filter(e=> e.done) as item (item.id)}",
+    		source: "(89:6) {#each todos.filter(e=> e.done) as item (item.id)}",
     		ctx
     	});
 
@@ -1119,23 +1119,25 @@ var app = (function () {
     	let h1;
     	let t0;
     	let t1;
-    	let t2;
-    	let t3;
-    	let div5;
+    	let div9;
     	let div1;
     	let div0;
     	let input;
-    	let t4;
+    	let t2;
+    	let div8;
     	let div4;
+    	let div3;
     	let div2;
     	let h20;
-    	let t6;
+    	let t4;
     	let each_blocks_1 = [];
     	let each0_lookup = new Map();
-    	let t7;
-    	let div3;
+    	let t5;
+    	let div7;
+    	let div6;
+    	let div5;
     	let h21;
-    	let t9;
+    	let t7;
     	let each_blocks = [];
     	let each1_lookup = new Map();
     	let current;
@@ -1167,57 +1169,67 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			h1 = element("h1");
-    			t0 = text("Hello ");
-    			t1 = text(/*name*/ ctx[0]);
-    			t2 = text("!");
-    			t3 = space();
-    			div5 = element("div");
+    			t0 = text(/*name*/ ctx[0]);
+    			t1 = space();
+    			div9 = element("div");
     			div1 = element("div");
     			div0 = element("div");
     			input = element("input");
-    			t4 = space();
+    			t2 = space();
+    			div8 = element("div");
     			div4 = element("div");
+    			div3 = element("div");
     			div2 = element("div");
     			h20 = element("h2");
-    			h20.textContent = "todo";
-    			t6 = space();
+    			h20.textContent = "代辦事項";
+    			t4 = space();
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].c();
     			}
 
-    			t7 = space();
-    			div3 = element("div");
+    			t5 = space();
+    			div7 = element("div");
+    			div6 = element("div");
+    			div5 = element("div");
     			h21 = element("h2");
-    			h21.textContent = "done";
-    			t9 = space();
+    			h21.textContent = "已完成";
+    			t7 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h1, "class", "svelte-v2by5z");
+    			attr_dev(h1, "class", "font-weight-normal svelte-v2by5z");
     			add_location(h1, file, 56, 1, 1363);
     			attr_dev(input, "type", "text");
-    			attr_dev(input, "class", "w-100");
+    			attr_dev(input, "class", "w-100 shadow");
     			attr_dev(input, "placeholder", "有什麼需要紀錄呢？");
-    			add_location(input, file, 61, 4, 1460);
+    			add_location(input, file, 61, 4, 1485);
     			attr_dev(div0, "class", "col-12");
-    			add_location(div0, file, 60, 3, 1435);
-    			attr_dev(div1, "class", "row");
-    			add_location(div1, file, 59, 2, 1414);
+    			add_location(div0, file, 60, 3, 1460);
+    			attr_dev(div1, "class", "row mb-3");
+    			add_location(div1, file, 59, 2, 1434);
     			attr_dev(h20, "class", "svelte-v2by5z");
-    			add_location(h20, file, 66, 4, 1647);
-    			attr_dev(div2, "class", "col-12 col-md-6");
-    			add_location(div2, file, 65, 3, 1613);
+    			add_location(h20, file, 69, 6, 1745);
+    			attr_dev(div2, "class", "card-body");
+    			add_location(div2, file, 68, 5, 1715);
+    			attr_dev(div3, "class", "card shadow");
+    			add_location(div3, file, 67, 4, 1684);
+    			attr_dev(div4, "class", "col-12 col-md-6");
+    			add_location(div4, file, 65, 3, 1645);
     			attr_dev(h21, "class", "svelte-v2by5z");
-    			add_location(h21, file, 81, 4, 2106);
-    			attr_dev(div3, "class", "col-12 col-md-6");
-    			add_location(div3, file, 80, 3, 2072);
-    			attr_dev(div4, "class", "row");
-    			add_location(div4, file, 64, 2, 1592);
-    			attr_dev(div5, "class", "container");
-    			add_location(div5, file, 58, 1, 1388);
+    			add_location(h21, file, 87, 6, 2305);
+    			attr_dev(div5, "class", "card-body");
+    			add_location(div5, file, 86, 5, 2275);
+    			attr_dev(div6, "class", "card shadow");
+    			add_location(div6, file, 85, 4, 2244);
+    			attr_dev(div7, "class", "col-12 col-md-6");
+    			add_location(div7, file, 84, 3, 2210);
+    			attr_dev(div8, "class", "row");
+    			add_location(div8, file, 64, 2, 1624);
+    			attr_dev(div9, "class", "container");
+    			add_location(div9, file, 58, 1, 1408);
     			attr_dev(main, "class", "svelte-v2by5z");
     			add_location(main, file, 55, 0, 1355);
     		},
@@ -1228,30 +1240,32 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			append_dev(main, h1);
     			append_dev(h1, t0);
-    			append_dev(h1, t1);
-    			append_dev(h1, t2);
-    			append_dev(main, t3);
-    			append_dev(main, div5);
-    			append_dev(div5, div1);
+    			append_dev(main, t1);
+    			append_dev(main, div9);
+    			append_dev(div9, div1);
     			append_dev(div1, div0);
     			append_dev(div0, input);
-    			append_dev(div5, t4);
-    			append_dev(div5, div4);
-    			append_dev(div4, div2);
+    			append_dev(div9, t2);
+    			append_dev(div9, div8);
+    			append_dev(div8, div4);
+    			append_dev(div4, div3);
+    			append_dev(div3, div2);
     			append_dev(div2, h20);
-    			append_dev(div2, t6);
+    			append_dev(div2, t4);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].m(div2, null);
     			}
 
-    			append_dev(div4, t7);
-    			append_dev(div4, div3);
-    			append_dev(div3, h21);
-    			append_dev(div3, t9);
+    			append_dev(div8, t5);
+    			append_dev(div8, div7);
+    			append_dev(div7, div6);
+    			append_dev(div6, div5);
+    			append_dev(div5, h21);
+    			append_dev(div5, t7);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div3, null);
+    				each_blocks[i].m(div5, null);
     			}
 
     			current = true;
@@ -1262,7 +1276,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*name*/ 1) set_data_dev(t1, /*name*/ ctx[0]);
+    			if (!current || dirty & /*name*/ 1) set_data_dev(t0, /*name*/ ctx[0]);
 
     			if (dirty & /*remove, todos, mark*/ 26) {
     				const each_value_1 = /*todos*/ ctx[1].filter(func);
@@ -1281,7 +1295,7 @@ var app = (function () {
     				group_outros();
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].r();
     				validate_each_keys(ctx, each_value, get_each_context, get_key_1);
-    				each_blocks = update_keyed_each(each_blocks, dirty, get_key_1, 1, ctx, each_value, each1_lookup, div3, fix_and_outro_and_destroy_block, create_each_block, null, get_each_context);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key_1, 1, ctx, each_value, each1_lookup, div5, fix_and_outro_and_destroy_block, create_each_block, null, get_each_context);
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].a();
     				check_outros();
     			}

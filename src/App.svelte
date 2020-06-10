@@ -54,43 +54,51 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
+	<h1 class="font-weight-normal">{name}</h1>
 
 	<div class="container">
-		<div class="row">
+		<div class="row mb-3">
 			<div class="col-12">
-				<input type="text" class="w-100" placeholder="有什麼需要紀錄呢？" on:keydown={e => e.key === 'Enter' && add(e.target)}>
+				<input type="text" class="w-100 shadow" placeholder="有什麼需要紀錄呢？" on:keydown={e => e.key === 'Enter' && add(e.target)}>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6">
-				<h2>todo</h2>
-				{#each todos.filter(e=> !e.done) as item (item.id)}
-					<label class="text-left"
-						in:receive="{{key: item.id}}" 
-						out:send="{{key: item.id}}"
-						animate:flip="{{duration: 200}}"
-						>
-						<input type=checkbox on:change={() => mark(item, true)}>
-						<span>{item.description}</span>
-						<button on:click="{() => remove(item)}">remove</button>
-					</label>
-				{/each}
 				
+				<div class="card shadow">
+					<div class="card-body">
+						<h2>代辦事項</h2>
+						{#each todos.filter(e=> !e.done) as item (item.id)}
+							<label class="text-left"
+								in:receive="{{key: item.id}}" 
+								out:send="{{key: item.id}}"
+								animate:flip="{{duration: 200}}"
+								>
+								<input type=checkbox on:change={() => mark(item, true)}>
+								<span>{item.description}</span>
+								<button on:click="{() => remove(item)}">remove</button>
+							</label>
+						{/each}
+					</div>
+				</div>
 			</div>
 			<div class="col-12 col-md-6">
-				<h2>done</h2>
-				{#each todos.filter(e=> e.done) as item (item.id)}
-					<label class="text-left done" 
-						in:receive="{{key: item.id}}" 
-						out:send="{{key: item.id}}"
-						animate:flip="{{duration: 200}}"
-						>
-						<input type=checkbox checked on:change={() => mark(item, false)}>
-						<span>{item.description}</span>
-						<button on:click="{() => remove(item)}">remove</button>
-					</label>
-				{/each}
+				<div class="card shadow">
+					<div class="card-body">
+						<h2>已完成</h2>
+						{#each todos.filter(e=> e.done) as item (item.id)}
+							<label class="text-left done" 
+								in:receive="{{key: item.id}}" 
+								out:send="{{key: item.id}}"
+								animate:flip="{{duration: 200}}"
+								>
+								<input type=checkbox checked on:change={() => mark(item, false)}>
+								<span>{item.description}</span>
+								<button on:click="{() => remove(item)}">remove</button>
+							</label>
+						{/each}
+					</div>
+				</div>
 			</div>
 		</div>
 
