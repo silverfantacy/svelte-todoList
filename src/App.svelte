@@ -5,23 +5,11 @@
 	
 	export let name;
 
-	// let uid = 1;
-	// let todos = [
-	// 	{ id: uid++, done: false, description: 'write some docs' },
-	// 	{ id: uid++, done: false, description: 'start writing blog post' },
-	// 	{ id: uid++, done: true,  description: 'buy some milk' },
-	// 	{ id: uid++, done: false, description: 'mow the lawn' },
-	// 	{ id: uid++, done: false, description: 'feed the turtle' },
-	// 	{ id: uid++, done: false, description: 'fix some bugs' },
-	// ];
 
 	let todos = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
-	// let uid = localStorage.getItem('todos') ? todos[todos.length - 1].id : 1;
-	// console.log('ttt',todos[todos.length - 1].id)
 
 
 	function add(e) {
-		console.log(e.value);
 		const todo = {
 			id: Date.now(),
 			done: false,
@@ -29,23 +17,13 @@
 		}
 
 		todos = [...todos, todo];
-		console.log('this todos',todos);
 		localStorage.setItem('todos', JSON.stringify(todos));
-		console.log('this todos', JSON.stringify(todos));
-		console.log('this todo description',todo.description);
 		e.value = ''
 	}
 
 	function mark(todo, done) {
-		// console.log('done', done)
-		// console.log('mark', e.done)
 		todo.done = done
 
-		// console.log('mark', e)
-		console.log('this todos',todos);
-		// todo.done = done;
-		console.log('this todo 2',todo);
-		// console.log('this todos',todos);
 		remove(todo);
 		todos = todos.concat(todo);
 		localStorage.setItem('todos', JSON.stringify(todos));
@@ -55,11 +33,6 @@
 		todos = todos.filter(t => t !== todo);
 		localStorage.setItem('todos', JSON.stringify(todos));
 	}
-	$: {
-		console.log('this todos',todos);
-	}
-
-
 
 	// 補間動畫
 	const [send, receive] = crossfade({  // 特殊函數，必定創建send, receive
@@ -82,7 +55,6 @@
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 
 	<div class="container">
 		<div class="row">
@@ -122,22 +94,6 @@
 			</div>
 		</div>
 
-		<!-- <div class="row">
-			<div class="col-12">
-				<h2>ALL</h2>
-				{#each todos as item (item.id)}
-					<label class="text-left"
-						in:receive="{{key: item.id}}" 
-						out:send="{{key: item.id}}"
-						animate:flip="{{duration: 200}}"
-						>
-						<input type=checkbox on:change={() => mark(item, true)} checked="{item.done}">
-						<span>{item.description}</span>
-						<button on:click="{() => remove(item)}">remove</button>
-					</label>
-				{/each}
-			</div>
-		</div> -->
 	</div>
 </main>
 
