@@ -10,6 +10,7 @@
 
 
 	function add(e) {
+		if(!e.value) return 
 		const todo = {
 			id: Date.now(),
 			done: false,

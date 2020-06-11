@@ -875,7 +875,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (86:6) {#each todos.filter(e=> !e.done) as item (item.id)}
+    // (87:6) {#each todos.filter(e=> !e.done) as item (item.id)}
     function create_each_block_1(key_1, ctx) {
     	let label;
     	let input;
@@ -915,12 +915,12 @@ var app = (function () {
     			button.textContent = "remove";
     			attr_dev(input, "type", "checkbox");
     			attr_dev(input, "class", "svelte-1n3dt7b");
-    			add_location(input, file, 91, 8, 2503);
-    			add_location(span, file, 92, 8, 2568);
+    			add_location(input, file, 92, 8, 2526);
+    			add_location(span, file, 93, 8, 2591);
     			attr_dev(button, "class", "svelte-1n3dt7b");
-    			add_location(button, file, 93, 8, 2608);
+    			add_location(button, file, 94, 8, 2631);
     			attr_dev(label, "class", "text-left svelte-1n3dt7b");
-    			add_location(label, file, 86, 7, 2344);
+    			add_location(label, file, 87, 7, 2367);
     			this.first = label;
     		},
     		m: function mount(target, anchor) {
@@ -986,14 +986,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(86:6) {#each todos.filter(e=> !e.done) as item (item.id)}",
+    		source: "(87:6) {#each todos.filter(e=> !e.done) as item (item.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (109:6) {#each todos.filter(e=> e.done) as item (item.id)}
+    // (110:6) {#each todos.filter(e=> e.done) as item (item.id)}
     function create_each_block(key_1, ctx) {
     	let label;
     	let input;
@@ -1034,12 +1034,12 @@ var app = (function () {
     			attr_dev(input, "type", "checkbox");
     			input.checked = true;
     			attr_dev(input, "class", "svelte-1n3dt7b");
-    			add_location(input, file, 114, 8, 3269);
-    			add_location(span, file, 115, 8, 3343);
+    			add_location(input, file, 115, 8, 3292);
+    			add_location(span, file, 116, 8, 3366);
     			attr_dev(button, "class", "svelte-1n3dt7b");
-    			add_location(button, file, 116, 8, 3383);
+    			add_location(button, file, 117, 8, 3406);
     			attr_dev(label, "class", "text-left done svelte-1n3dt7b");
-    			add_location(label, file, 109, 7, 3104);
+    			add_location(label, file, 110, 7, 3127);
     			this.first = label;
     		},
     		m: function mount(target, anchor) {
@@ -1105,7 +1105,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(109:6) {#each todos.filter(e=> e.done) as item (item.id)}",
+    		source: "(110:6) {#each todos.filter(e=> e.done) as item (item.id)}",
     		ctx
     	});
 
@@ -1213,45 +1213,45 @@ var app = (function () {
     			button1 = element("button");
     			t11 = text("全部清除");
     			attr_dev(h1, "class", "font-weight-normal svelte-1n3dt7b");
-    			add_location(h1, file, 71, 1, 1870);
+    			add_location(h1, file, 72, 1, 1893);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "class", "w-100 shadow");
     			attr_dev(input, "placeholder", "有什麼需要紀錄呢？");
-    			add_location(input, file, 76, 4, 1992);
+    			add_location(input, file, 77, 4, 2015);
     			attr_dev(div0, "class", "col-12");
-    			add_location(div0, file, 75, 3, 1967);
+    			add_location(div0, file, 76, 3, 1990);
     			attr_dev(div1, "class", "row mb-3");
-    			add_location(div1, file, 74, 2, 1941);
+    			add_location(div1, file, 75, 2, 1964);
     			attr_dev(h20, "class", "svelte-1n3dt7b");
-    			add_location(h20, file, 84, 6, 2265);
+    			add_location(h20, file, 85, 6, 2288);
     			attr_dev(button0, "type", "button");
     			attr_dev(button0, "class", "btn btn-outline-secondary btn-block btn-sm");
     			button0.disabled = button0_disabled_value = /*todos*/ ctx[1].filter(func_1).length == 0;
-    			add_location(button0, file, 96, 6, 2700);
+    			add_location(button0, file, 97, 6, 2723);
     			attr_dev(div2, "class", "card-body");
-    			add_location(div2, file, 83, 5, 2235);
+    			add_location(div2, file, 84, 5, 2258);
     			attr_dev(div3, "class", "card shadow");
-    			add_location(div3, file, 82, 4, 2204);
+    			add_location(div3, file, 83, 4, 2227);
     			attr_dev(div4, "class", "col-12 col-md-6 mb-3 mb-md-0");
-    			add_location(div4, file, 80, 3, 2152);
+    			add_location(div4, file, 81, 3, 2175);
     			attr_dev(h21, "class", "svelte-1n3dt7b");
-    			add_location(h21, file, 107, 6, 3027);
+    			add_location(h21, file, 108, 6, 3050);
     			attr_dev(button1, "type", "button");
     			attr_dev(button1, "class", "btn btn-outline-secondary btn-block btn-sm");
     			button1.disabled = button1_disabled_value = /*todos*/ ctx[1].filter(func_3).length == 0;
-    			add_location(button1, file, 119, 6, 3475);
+    			add_location(button1, file, 120, 6, 3498);
     			attr_dev(div5, "class", "card-body");
-    			add_location(div5, file, 106, 5, 2997);
+    			add_location(div5, file, 107, 5, 3020);
     			attr_dev(div6, "class", "card shadow");
-    			add_location(div6, file, 105, 4, 2966);
+    			add_location(div6, file, 106, 4, 2989);
     			attr_dev(div7, "class", "col-12 col-md-6");
-    			add_location(div7, file, 104, 3, 2932);
+    			add_location(div7, file, 105, 3, 2955);
     			attr_dev(div8, "class", "row");
-    			add_location(div8, file, 79, 2, 2131);
+    			add_location(div8, file, 80, 2, 2154);
     			attr_dev(div9, "class", "container");
-    			add_location(div9, file, 73, 1, 1915);
+    			add_location(div9, file, 74, 1, 1938);
     			attr_dev(main, "class", "svelte-1n3dt7b");
-    			add_location(main, file, 70, 0, 1862);
+    			add_location(main, file, 71, 0, 1885);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1403,6 +1403,8 @@ var app = (function () {
     	: [];
 
     	function add(e) {
+    		if (!e.value) return;
+
     		const todo = {
     			id: Date.now(),
     			done: false,
