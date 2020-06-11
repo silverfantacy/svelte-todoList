@@ -714,6 +714,10 @@ var app = (function () {
         else
             dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
     }
+    function prop_dev(node, property, value) {
+        node[property] = value;
+        dispatch_dev("SvelteDOMSetProperty", { node, property, value });
+    }
     function set_data_dev(text, data) {
         data = '' + data;
         if (text.data === data)
@@ -861,27 +865,26 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[12] = list[i];
+    	child_ctx[16] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[12] = list[i];
+    	child_ctx[16] = list[i];
     	return child_ctx;
     }
 
-    // (71:6) {#each todos.filter(e=> !e.done) as item (item.id)}
+    // (86:6) {#each todos.filter(e=> !e.done) as item (item.id)}
     function create_each_block_1(key_1, ctx) {
     	let label;
     	let input;
     	let t0;
     	let span;
-    	let t1_value = /*item*/ ctx[12].description + "";
+    	let t1_value = /*item*/ ctx[16].description + "";
     	let t1;
     	let t2;
     	let button;
-    	let t4;
     	let label_intro;
     	let label_outro;
     	let rect;
@@ -891,11 +894,11 @@ var app = (function () {
     	let dispose;
 
     	function change_handler(...args) {
-    		return /*change_handler*/ ctx[8](/*item*/ ctx[12], ...args);
+    		return /*change_handler*/ ctx[10](/*item*/ ctx[16], ...args);
     	}
 
     	function click_handler(...args) {
-    		return /*click_handler*/ ctx[9](/*item*/ ctx[12], ...args);
+    		return /*click_handler*/ ctx[11](/*item*/ ctx[16], ...args);
     	}
 
     	const block = {
@@ -910,15 +913,14 @@ var app = (function () {
     			t2 = space();
     			button = element("button");
     			button.textContent = "remove";
-    			t4 = space();
     			attr_dev(input, "type", "checkbox");
-    			attr_dev(input, "class", "svelte-v2by5z");
-    			add_location(input, file, 76, 8, 1983);
-    			add_location(span, file, 77, 8, 2048);
-    			attr_dev(button, "class", "svelte-v2by5z");
-    			add_location(button, file, 78, 8, 2088);
-    			attr_dev(label, "class", "text-left svelte-v2by5z");
-    			add_location(label, file, 71, 7, 1824);
+    			attr_dev(input, "class", "svelte-1n3dt7b");
+    			add_location(input, file, 91, 8, 2503);
+    			add_location(span, file, 92, 8, 2568);
+    			attr_dev(button, "class", "svelte-1n3dt7b");
+    			add_location(button, file, 93, 8, 2608);
+    			attr_dev(label, "class", "text-left svelte-1n3dt7b");
+    			add_location(label, file, 86, 7, 2344);
     			this.first = label;
     		},
     		m: function mount(target, anchor) {
@@ -929,7 +931,6 @@ var app = (function () {
     			append_dev(span, t1);
     			append_dev(label, t2);
     			append_dev(label, button);
-    			append_dev(label, t4);
     			current = true;
 
     			if (!mounted) {
@@ -943,7 +944,7 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if ((!current || dirty & /*todos*/ 2) && t1_value !== (t1_value = /*item*/ ctx[12].description + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*todos*/ 2) && t1_value !== (t1_value = /*item*/ ctx[16].description + "")) set_data_dev(t1, t1_value);
     		},
     		r: function measure() {
     			rect = label.getBoundingClientRect();
@@ -962,7 +963,7 @@ var app = (function () {
 
     			add_render_callback(() => {
     				if (label_outro) label_outro.end(1);
-    				if (!label_intro) label_intro = create_in_transition(label, /*receive*/ ctx[6], { key: /*item*/ ctx[12].id });
+    				if (!label_intro) label_intro = create_in_transition(label, /*receive*/ ctx[6], { key: /*item*/ ctx[16].id });
     				label_intro.start();
     			});
 
@@ -970,7 +971,7 @@ var app = (function () {
     		},
     		o: function outro(local) {
     			if (label_intro) label_intro.invalidate();
-    			label_outro = create_out_transition(label, /*send*/ ctx[5], { key: /*item*/ ctx[12].id });
+    			label_outro = create_out_transition(label, /*send*/ ctx[5], { key: /*item*/ ctx[16].id });
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -985,24 +986,23 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(71:6) {#each todos.filter(e=> !e.done) as item (item.id)}",
+    		source: "(86:6) {#each todos.filter(e=> !e.done) as item (item.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (89:6) {#each todos.filter(e=> e.done) as item (item.id)}
+    // (109:6) {#each todos.filter(e=> e.done) as item (item.id)}
     function create_each_block(key_1, ctx) {
     	let label;
     	let input;
     	let t0;
     	let span;
-    	let t1_value = /*item*/ ctx[12].description + "";
+    	let t1_value = /*item*/ ctx[16].description + "";
     	let t1;
     	let t2;
     	let button;
-    	let t4;
     	let label_intro;
     	let label_outro;
     	let rect;
@@ -1012,11 +1012,11 @@ var app = (function () {
     	let dispose;
 
     	function change_handler_1(...args) {
-    		return /*change_handler_1*/ ctx[10](/*item*/ ctx[12], ...args);
+    		return /*change_handler_1*/ ctx[13](/*item*/ ctx[16], ...args);
     	}
 
-    	function click_handler_1(...args) {
-    		return /*click_handler_1*/ ctx[11](/*item*/ ctx[12], ...args);
+    	function click_handler_2(...args) {
+    		return /*click_handler_2*/ ctx[14](/*item*/ ctx[16], ...args);
     	}
 
     	const block = {
@@ -1031,16 +1031,15 @@ var app = (function () {
     			t2 = space();
     			button = element("button");
     			button.textContent = "remove";
-    			t4 = space();
     			attr_dev(input, "type", "checkbox");
     			input.checked = true;
-    			attr_dev(input, "class", "svelte-v2by5z");
-    			add_location(input, file, 94, 8, 2547);
-    			add_location(span, file, 95, 8, 2621);
-    			attr_dev(button, "class", "svelte-v2by5z");
-    			add_location(button, file, 96, 8, 2661);
-    			attr_dev(label, "class", "text-left done svelte-v2by5z");
-    			add_location(label, file, 89, 7, 2382);
+    			attr_dev(input, "class", "svelte-1n3dt7b");
+    			add_location(input, file, 114, 8, 3269);
+    			add_location(span, file, 115, 8, 3343);
+    			attr_dev(button, "class", "svelte-1n3dt7b");
+    			add_location(button, file, 116, 8, 3383);
+    			attr_dev(label, "class", "text-left done svelte-1n3dt7b");
+    			add_location(label, file, 109, 7, 3104);
     			this.first = label;
     		},
     		m: function mount(target, anchor) {
@@ -1051,13 +1050,12 @@ var app = (function () {
     			append_dev(span, t1);
     			append_dev(label, t2);
     			append_dev(label, button);
-    			append_dev(label, t4);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
     					listen_dev(input, "change", change_handler_1, false, false, false),
-    					listen_dev(button, "click", click_handler_1, false, false, false)
+    					listen_dev(button, "click", click_handler_2, false, false, false)
     				];
 
     				mounted = true;
@@ -1065,7 +1063,7 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if ((!current || dirty & /*todos*/ 2) && t1_value !== (t1_value = /*item*/ ctx[12].description + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*todos*/ 2) && t1_value !== (t1_value = /*item*/ ctx[16].description + "")) set_data_dev(t1, t1_value);
     		},
     		r: function measure() {
     			rect = label.getBoundingClientRect();
@@ -1084,7 +1082,7 @@ var app = (function () {
 
     			add_render_callback(() => {
     				if (label_outro) label_outro.end(1);
-    				if (!label_intro) label_intro = create_in_transition(label, /*receive*/ ctx[6], { key: /*item*/ ctx[12].id });
+    				if (!label_intro) label_intro = create_in_transition(label, /*receive*/ ctx[6], { key: /*item*/ ctx[16].id });
     				label_intro.start();
     			});
 
@@ -1092,7 +1090,7 @@ var app = (function () {
     		},
     		o: function outro(local) {
     			if (label_intro) label_intro.invalidate();
-    			label_outro = create_out_transition(label, /*send*/ ctx[5], { key: /*item*/ ctx[12].id });
+    			label_outro = create_out_transition(label, /*send*/ ctx[5], { key: /*item*/ ctx[16].id });
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -1107,7 +1105,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(89:6) {#each todos.filter(e=> e.done) as item (item.id)}",
+    		source: "(109:6) {#each todos.filter(e=> e.done) as item (item.id)}",
     		ctx
     	});
 
@@ -1133,19 +1131,27 @@ var app = (function () {
     	let each_blocks_1 = [];
     	let each0_lookup = new Map();
     	let t5;
+    	let button0;
+    	let t6;
+    	let button0_disabled_value;
+    	let t7;
     	let div7;
     	let div6;
     	let div5;
     	let h21;
-    	let t7;
+    	let t9;
     	let each_blocks = [];
     	let each1_lookup = new Map();
+    	let t10;
+    	let button1;
+    	let t11;
+    	let button1_disabled_value;
     	let current;
     	let mounted;
     	let dispose;
     	let each_value_1 = /*todos*/ ctx[1].filter(func);
     	validate_each_argument(each_value_1);
-    	const get_key = ctx => /*item*/ ctx[12].id;
+    	const get_key = ctx => /*item*/ ctx[16].id;
     	validate_each_keys(ctx, each_value_1, get_each_context_1, get_key);
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -1154,9 +1160,9 @@ var app = (function () {
     		each0_lookup.set(key, each_blocks_1[i] = create_each_block_1(key, child_ctx));
     	}
 
-    	let each_value = /*todos*/ ctx[1].filter(func_1);
+    	let each_value = /*todos*/ ctx[1].filter(func_2);
     	validate_each_argument(each_value);
-    	const get_key_1 = ctx => /*item*/ ctx[12].id;
+    	const get_key_1 = ctx => /*item*/ ctx[16].id;
     	validate_each_keys(ctx, each_value, get_each_context, get_key_1);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -1189,49 +1195,63 @@ var app = (function () {
     			}
 
     			t5 = space();
+    			button0 = element("button");
+    			t6 = text("全部完成");
+    			t7 = space();
     			div7 = element("div");
     			div6 = element("div");
     			div5 = element("div");
     			h21 = element("h2");
     			h21.textContent = "已完成";
-    			t7 = space();
+    			t9 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h1, "class", "font-weight-normal svelte-v2by5z");
-    			add_location(h1, file, 56, 1, 1363);
+    			t10 = space();
+    			button1 = element("button");
+    			t11 = text("全部清除");
+    			attr_dev(h1, "class", "font-weight-normal svelte-1n3dt7b");
+    			add_location(h1, file, 71, 1, 1870);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "class", "w-100 shadow");
     			attr_dev(input, "placeholder", "有什麼需要紀錄呢？");
-    			add_location(input, file, 61, 4, 1485);
+    			add_location(input, file, 76, 4, 1992);
     			attr_dev(div0, "class", "col-12");
-    			add_location(div0, file, 60, 3, 1460);
+    			add_location(div0, file, 75, 3, 1967);
     			attr_dev(div1, "class", "row mb-3");
-    			add_location(div1, file, 59, 2, 1434);
-    			attr_dev(h20, "class", "svelte-v2by5z");
-    			add_location(h20, file, 69, 6, 1745);
+    			add_location(div1, file, 74, 2, 1941);
+    			attr_dev(h20, "class", "svelte-1n3dt7b");
+    			add_location(h20, file, 84, 6, 2265);
+    			attr_dev(button0, "type", "button");
+    			attr_dev(button0, "class", "btn btn-outline-secondary btn-block btn-sm");
+    			button0.disabled = button0_disabled_value = /*todos*/ ctx[1].filter(func_1).length == 0;
+    			add_location(button0, file, 96, 6, 2700);
     			attr_dev(div2, "class", "card-body");
-    			add_location(div2, file, 68, 5, 1715);
+    			add_location(div2, file, 83, 5, 2235);
     			attr_dev(div3, "class", "card shadow");
-    			add_location(div3, file, 67, 4, 1684);
-    			attr_dev(div4, "class", "col-12 col-md-6");
-    			add_location(div4, file, 65, 3, 1645);
-    			attr_dev(h21, "class", "svelte-v2by5z");
-    			add_location(h21, file, 87, 6, 2305);
+    			add_location(div3, file, 82, 4, 2204);
+    			attr_dev(div4, "class", "col-12 col-md-6 mb-3 mb-md-0");
+    			add_location(div4, file, 80, 3, 2152);
+    			attr_dev(h21, "class", "svelte-1n3dt7b");
+    			add_location(h21, file, 107, 6, 3027);
+    			attr_dev(button1, "type", "button");
+    			attr_dev(button1, "class", "btn btn-outline-secondary btn-block btn-sm");
+    			button1.disabled = button1_disabled_value = /*todos*/ ctx[1].filter(func_3).length == 0;
+    			add_location(button1, file, 119, 6, 3475);
     			attr_dev(div5, "class", "card-body");
-    			add_location(div5, file, 86, 5, 2275);
+    			add_location(div5, file, 106, 5, 2997);
     			attr_dev(div6, "class", "card shadow");
-    			add_location(div6, file, 85, 4, 2244);
+    			add_location(div6, file, 105, 4, 2966);
     			attr_dev(div7, "class", "col-12 col-md-6");
-    			add_location(div7, file, 84, 3, 2210);
+    			add_location(div7, file, 104, 3, 2932);
     			attr_dev(div8, "class", "row");
-    			add_location(div8, file, 64, 2, 1624);
+    			add_location(div8, file, 79, 2, 2131);
     			attr_dev(div9, "class", "container");
-    			add_location(div9, file, 58, 1, 1408);
-    			attr_dev(main, "class", "svelte-v2by5z");
-    			add_location(main, file, 55, 0, 1355);
+    			add_location(div9, file, 73, 1, 1915);
+    			attr_dev(main, "class", "svelte-1n3dt7b");
+    			add_location(main, file, 70, 0, 1862);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1257,21 +1277,32 @@ var app = (function () {
     				each_blocks_1[i].m(div2, null);
     			}
 
-    			append_dev(div8, t5);
+    			append_dev(div2, t5);
+    			append_dev(div2, button0);
+    			append_dev(button0, t6);
+    			append_dev(div8, t7);
     			append_dev(div8, div7);
     			append_dev(div7, div6);
     			append_dev(div6, div5);
     			append_dev(div5, h21);
-    			append_dev(div5, t7);
+    			append_dev(div5, t9);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div5, null);
     			}
 
+    			append_dev(div5, t10);
+    			append_dev(div5, button1);
+    			append_dev(button1, t11);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(input, "keydown", /*keydown_handler*/ ctx[7], false, false, false);
+    				dispose = [
+    					listen_dev(input, "keydown", /*keydown_handler*/ ctx[9], false, false, false),
+    					listen_dev(button0, "click", /*click_handler_1*/ ctx[12], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_3*/ ctx[15], false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
@@ -1284,20 +1315,28 @@ var app = (function () {
     				group_outros();
     				for (let i = 0; i < each_blocks_1.length; i += 1) each_blocks_1[i].r();
     				validate_each_keys(ctx, each_value_1, get_each_context_1, get_key);
-    				each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, each_value_1, each0_lookup, div2, fix_and_outro_and_destroy_block, create_each_block_1, null, get_each_context_1);
+    				each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, each_value_1, each0_lookup, div2, fix_and_outro_and_destroy_block, create_each_block_1, t5, get_each_context_1);
     				for (let i = 0; i < each_blocks_1.length; i += 1) each_blocks_1[i].a();
     				check_outros();
     			}
 
+    			if (!current || dirty & /*todos*/ 2 && button0_disabled_value !== (button0_disabled_value = /*todos*/ ctx[1].filter(func_1).length == 0)) {
+    				prop_dev(button0, "disabled", button0_disabled_value);
+    			}
+
     			if (dirty & /*remove, todos, mark*/ 26) {
-    				const each_value = /*todos*/ ctx[1].filter(func_1);
+    				const each_value = /*todos*/ ctx[1].filter(func_2);
     				validate_each_argument(each_value);
     				group_outros();
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].r();
     				validate_each_keys(ctx, each_value, get_each_context, get_key_1);
-    				each_blocks = update_keyed_each(each_blocks, dirty, get_key_1, 1, ctx, each_value, each1_lookup, div5, fix_and_outro_and_destroy_block, create_each_block, null, get_each_context);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key_1, 1, ctx, each_value, each1_lookup, div5, fix_and_outro_and_destroy_block, create_each_block, t10, get_each_context);
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].a();
     				check_outros();
+    			}
+
+    			if (!current || dirty & /*todos*/ 2 && button1_disabled_value !== (button1_disabled_value = /*todos*/ ctx[1].filter(func_3).length == 0)) {
+    				prop_dev(button1, "disabled", button1_disabled_value);
     			}
     		},
     		i: function intro(local) {
@@ -1336,7 +1375,7 @@ var app = (function () {
     			}
 
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -1352,7 +1391,9 @@ var app = (function () {
     }
 
     const func = e => !e.done;
-    const func_1 = e => e.done;
+    const func_1 = e => !e.done;
+    const func_2 = e => e.done;
+    const func_3 = e => e.done;
 
     function instance($$self, $$props, $$invalidate) {
     	let { name } = $$props;
@@ -1407,6 +1448,21 @@ var app = (function () {
     		}
     	});
 
+    	function allMark() {
+    		let tempTodos = JSON.parse(JSON.stringify(todos.filter(e => !e.done)));
+    		tempTodos.map(e => e.done = true);
+    		let tempDoneTodos = JSON.parse(JSON.stringify(todos.filter(e => e.done)));
+    		let newTodos = [...tempDoneTodos, ...tempTodos];
+    		$$invalidate(1, todos = newTodos);
+    		localStorage.setItem("todos", JSON.stringify(todos));
+    	}
+
+    	function delDone() {
+    		let tempTodos = JSON.parse(JSON.stringify(todos.filter(e => !e.done)));
+    		$$invalidate(1, todos = tempTodos);
+    		localStorage.setItem("todos", JSON.stringify(todos));
+    	}
+
     	const writable_props = ["name"];
 
     	Object.keys($$props).forEach(key => {
@@ -1418,8 +1474,10 @@ var app = (function () {
     	const keydown_handler = e => e.key === "Enter" && add(e.target);
     	const change_handler = item => mark(item, true);
     	const click_handler = item => remove(item);
+    	const click_handler_1 = () => allMark();
     	const change_handler_1 = item => mark(item, false);
-    	const click_handler_1 = item => remove(item);
+    	const click_handler_2 = item => remove(item);
+    	const click_handler_3 = () => delDone();
 
     	$$self.$set = $$props => {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
@@ -1435,7 +1493,9 @@ var app = (function () {
     		mark,
     		remove,
     		send,
-    		receive
+    		receive,
+    		allMark,
+    		delDone
     	});
 
     	$$self.$inject_state = $$props => {
@@ -1455,11 +1515,15 @@ var app = (function () {
     		remove,
     		send,
     		receive,
+    		allMark,
+    		delDone,
     		keydown_handler,
     		change_handler,
     		click_handler,
+    		click_handler_1,
     		change_handler_1,
-    		click_handler_1
+    		click_handler_2,
+    		click_handler_3
     	];
     }
 

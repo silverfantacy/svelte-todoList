@@ -51,6 +51,21 @@
 			}
 		}
 	})
+
+	function allMark() {
+		let tempTodos = JSON.parse(JSON.stringify(todos.filter(e=> !e.done)))
+		tempTodos.map(e=> e.done = true)
+		let tempDoneTodos = JSON.parse(JSON.stringify(todos.filter(e=> e.done)))
+		let newTodos = [...tempDoneTodos, ...tempTodos]
+		todos = newTodos
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}
+
+	function delDone() {
+		let tempTodos = JSON.parse(JSON.stringify(todos.filter(e=> !e.done)))
+		todos = tempTodos
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}
 </script>
 
 <main>
@@ -63,7 +78,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-6">
+			<div class="col-12 col-md-6 mb-3 mb-md-0">
 				
 				<div class="card shadow">
 					<div class="card-body">
@@ -79,6 +94,11 @@
 								<button on:click="{() => remove(item)}">remove</button>
 							</label>
 						{/each}
+						<button 
+							type="button"
+							class="btn btn-outline-secondary btn-block btn-sm"
+							disabled="{todos.filter(e=> !e.done).length == 0}"
+							on:click="{() => allMark()}">全部完成</button>
 					</div>
 				</div>
 			</div>
@@ -97,6 +117,11 @@
 								<button on:click="{() => remove(item)}">remove</button>
 							</label>
 						{/each}
+						<button
+							type="button"
+							class="btn btn-outline-secondary btn-block btn-sm"
+							disabled="{todos.filter(e=> e.done).length == 0}"
+							on:click="{() => delDone()}">全部清除</button>
 					</div>
 				</div>
 			</div>
@@ -127,8 +152,8 @@
 	}
 
 	h2 {
-		font-size: 2em;
-		font-weight: 200;
+		font-size: 1.5em;
+		font-weight: 400;
 		user-select: none;
 		margin: 0 0 0.5em 0;
 	}
@@ -157,7 +182,7 @@
 		background-color:hsl(240, 8%, 98%);
 	}
 
-	button {
+	label button {
 		position: absolute;
 		top: 0;
 		right: 0.2em;
